@@ -33,9 +33,9 @@
         <div class="main-info row">
             <div class="col-lg-6">
 
-                <p class="info-uzivatel">OSOBNÍ ČÍSO: </p>
-                <p class="info-uzivatel">JMÉNO & PŘIJÍMENÍ:</p>
-                <p class="info-uzivatel">ODDĚLENÍ:</p>
+                <p class="info-uzivatel">OSOBNÍ ČÍSO: <span id="numberInfo" class="info-added"> --:-- </span> </p>
+                <p class="info-uzivatel">JMÉNO & PŘIJÍMENÍ: <span id="nameInfo" class="info-added"> --:-- </span></p>
+                <p class="info-uzivatel">ODDĚLENÍ: <span id="departmentInfo" class="info-added"> --:-- </span></p>
 
             </div>
 
@@ -82,7 +82,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn tlacitko-close" data-dismiss="modal">Zrušit</button>
-                            <button type="button" class="btn tlacitko-potvrdit">POTVRDIT</button>
+                            <button type="button" class="btn tlacitko-potvrdit" onclick="showInfo()" data-dismiss="modal">POTVRDIT</button>
                         </div>
                     </div>
                 </div>
