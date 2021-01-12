@@ -1,31 +1,31 @@
+let informationAboutUser = [];
 
 
 
-function showInfo(){
 
-    var osobniCislo = document.getElementById("personalId").value;
+function userInputInformation(){
 
-    document.getElementById("numberInfo").innerText = osobniCislo;
-
-    var jmenoP = document.getElementById("jmenoPrijimeni").value;
-
-    document.getElementById("nameInfo").innerText = jmenoP;
-
-    var department = document.getElementById("workingPlace").value;
-
-    document.getElementById("departmentInfo").innerText = department;
+    var osobniCislo = $("#userId").val();
+    var jmenoPracovnika = $("#userName").val();
+    var pracovniOddeleni = $("#userDepartment").val();
+    var urlInput = "URL;file://fs1.intranet.fpc.cz/vis/soubory2/" + $("#userId").val() + "/vykaz1.html";
     
-    var userInfo = [osobniCislo, jmenoP, department];
+    $("#numberInfo").text(osobniCislo);
+    $("#nameInfo").text(jmenoPracovnika);
+    $("#departmentInfo").text(pracovniOddeleni);
 
-    console.log(userInfo);
+    informationAboutUser.push(osobniCislo);
+    informationAboutUser.push(jmenoPracovnika);
+    informationAboutUser.push(pracovniOddeleni);
+    informationAboutUser.push(urlInput);
+
+
+
     
-
+    
+    console.log(informationAboutUser);
+    
+    
 }
-
-
-
-
-
-
 
 

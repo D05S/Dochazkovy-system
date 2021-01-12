@@ -60,16 +60,16 @@
                             <form>
                                 <div class="form-group">
                                   <label for="personalID">Osobní číslo</label>
-                                  <input type="number" class="form-control" id="personalId" placeholder="vložte osobní čislo">
+                                  <input type="number" class="form-control" id="userId" placeholder="vložte osobní čislo">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="jmenoPrijimeni">Jméno & Přijímení</label>
-                                    <textarea class="form-control" id="jmenoPrijimeni" rows="1" placeholder="Jméno Přijímení"></textarea>
+                                    <textarea class="form-control" id="userName" rows="1" placeholder="Jméno Přijímení"></textarea>
                                   </div>
                                 <div class="form-group">
                                   <label for="workingPlace">Vyberte oddělení</label>
-                                  <select class="form-control" id="workingPlace">
+                                  <select class="form-control" id="userDepartment">
                                     <option>Obchod</option>
                                     <option>Konstrukce</option>
                                     <option>MD</option>
@@ -82,7 +82,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn tlacitko-close" data-dismiss="modal">Zrušit</button>
-                            <button type="button" class="btn tlacitko-potvrdit" onclick="showInfo()" data-dismiss="modal">POTVRDIT</button>
+                            <button type="button" class="btn tlacitko-potvrdit" onclick="userInputInformation()" data-dismiss="modal">POTVRDIT</button>
                         </div>
                     </div>
                 </div>
@@ -127,6 +127,8 @@
                         
                     </tbody>
                 </table>
+
+                
 
 
             </div>
@@ -409,6 +411,7 @@
 
     </section>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="index.js"></script>
     
 </body>
