@@ -33,9 +33,9 @@
         <div class="main-info row">
             <div class="col-lg-6">
 
-                <p class="info-uzivatel">OSOBNÍ ČÍSO: <span id="numberInfo" class="info-added"> --:-- </span> </p>
-                <p class="info-uzivatel">JMÉNO & PŘIJÍMENÍ: <span id="nameInfo" class="info-added"> --:-- </span></p>
-                <p class="info-uzivatel">ODDĚLENÍ: <span id="departmentInfo" class="info-added"> --:-- </span></p>
+                <p class="info-uzivatel">OSOBNÍ ČÍSO: <span id="numberInfo" class="info-added"> -- : -- </span> </p>
+                <p class="info-uzivatel">JMÉNO & PŘIJÍMENÍ: <span id="nameInfo" class="info-added"> -- : -- </span></p>
+                <p class="info-uzivatel">ODDĚLENÍ: <span id="departmentInfo" class="info-added"> -- : -- </span></p>
 
             </div>
 
@@ -51,25 +51,27 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content window-border">
                         <div class="modal-header">
+                            
                             <h5 class="modal-title" id="exampleModalLabel">Nový uživatel</h5>
-                            <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button> -->
+                            
                         </div>
+                    
                         <div class="modal-body">
                             <form>
+
                                 <div class="form-group">
                                   <label for="personalID">Osobní číslo</label>
-                                  <input type="number" class="form-control" id="userId" placeholder="vložte osobní čislo">
+                                  <input type="number" name="userNumber" class="form-control" id="userId" placeholder="vložte osobní čislo">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="jmenoPrijimeni">Jméno & Přijímení</label>
-                                    <textarea class="form-control" id="userName" rows="1" placeholder="Jméno Přijímení"></textarea>
+                                    <textarea class="form-control" name="userName" id="userName" rows="1" placeholder="Jméno a Přijímení"></textarea>
                                   </div>
+
                                 <div class="form-group">
                                   <label for="workingPlace">Vyberte oddělení</label>
-                                  <select class="form-control" id="userDepartment">
+                                  <select name="userDepartment" class="form-control" id="userDepartment">
                                     <option>Obchod</option>
                                     <option>Konstrukce</option>
                                     <option>MD</option>
@@ -80,10 +82,12 @@
                                 
                             </form>
                         </div>
+
                         <div class="modal-footer">
                             <button type="button" class="btn tlacitko-close" data-dismiss="modal">Zrušit</button>
-                            <button type="button" class="btn tlacitko-potvrdit" onclick="userInputInformation()" data-dismiss="modal">POTVRDIT</button>
+                            <button type="submit" class="btn tlacitko-potvrdit"  onclick="userInputInformation()" data-dismiss="modal">POTVRDIT</button>
                         </div>
+                    
                     </div>
                 </div>
                 </div>
@@ -106,23 +110,23 @@
                     <tbody>
                         <tr class="souhrn-rozdeleni">
                             <td>PŘESČAS: </td>
-                            <td class="souhrn-timeInfo"> hh:mm</td>
+                            <td class="souhrn-timeInfo" id="overTime"> hh:mm</td>
                         </tr>
                         <tr class="souhrn-rozdeleni">
-                            <td>POČET PŘESTÁVEK ZA TENTO MĚSÍC: </td>
-                            <td class="souhrn-timeInfo"> hh:mm </td>
+                            <td>POČET DOVOLENÉ TENTO MĚSÍC: </td>
+                            <td class="souhrn-timeInfo" id="holiday"> dd </td>
                         </tr>
                         <tr class="souhrn-rozdeleni">
                             <td>NÁVŠTĚVA LÉKAŘE TENTO MĚSÍC: </td>
-                            <td class="souhrn-timeInfo"> hh:mm </td>
+                            <td class="souhrn-timeInfo" id="medicVisit"> dd </td>
                         </tr>
                         <tr class="souhrn-rozdeleni">
                             <td>PRACOVNÍ DNY TENTO MĚSÍC: </td>
-                            <td class="souhrn-timeInfo"> dd </td>
+                            <td class="souhrn-timeInfo" id="workDaysThisMonth"> dd </td>
                         </tr>
                         <tr class="souhrn-rozdeleni">
                             <td>ODPRACOVÁNO DNÍ: </td>
-                            <td class="souhrn-timeInfo"> dd </td>
+                            <td class="souhrn-timeInfo" id="workDaysAcomplish"> dd  </td>
                         </tr>
                         
                     </tbody>
@@ -145,252 +149,252 @@
                             <td class="position-text">POZNÁMKY</td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>01.01.2021</td>
-                            <td>Sobota</td>
-                            <td>--:--</td>
-                            <td>--:--</td>
-                            <td>--:--</td>
-                            <td>POZNÁMKY</td>
+                            <td id="0_1"> -- : -- </td>
+                            <td id="0_2"> -- : -- </td>
+                            <td id="0_3"> -- : -- </td>
+                            <td id="0_4"> -- : -- </td>
+                            <td id="0_5"> -- : -- </td>
+                            <td id="0_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>02.01.2021</td>
-                            <td>Neděle</td>
-                            <td>--:--</td>
-                            <td>--:--</td>
-                            <td>--:--</td>
-                            <td>POZNÁMKY</td>
+                            <td id="1_1"> -- : -- </td>
+                            <td id="1_2"> -- : -- </td>
+                            <td id="1_3"> -- : -- </td>
+                            <td id="1_4"> -- : -- </td>
+                            <td id="1_5"> -- : -- </td>
+                            <td id="1_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>03.01.2021</td>
-                            <td>Pondělí</td>
-                            <td>6:30</td>
-                            <td>15:00</td>
-                            <td>8:00</td>
-                            <td>POZNÁMKY</td>
+                            <td id="2_1"> -- : -- </td>
+                            <td id="2_2"> -- : -- </td>
+                            <td id="2_3"> -- : -- </td>
+                            <td id="2_4"> -- : -- </td>
+                            <td id="2_5"> -- : -- </td>
+                            <td id="2_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>04.01.2021</td>
-                            <td>Úterý</td>
-                            <td>6:00</td>
-                            <td>12:30</td>
-                            <td>5:30</td>
-                            <td>Lékař</td>
+                            <td id="3_1"> -- : -- </td>
+                            <td id="3_2"> -- : -- </td>
+                            <td id="3_3"> -- : -- </td>
+                            <td id="3_4"> -- : -- </td>
+                            <td id="3_5"> -- : -- </td>
+                            <td id="3_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="4_1"> -- : -- </td>
+                            <td id="4_2"> -- : -- </td>
+                            <td id="4_3"> -- : -- </td>
+                            <td id="4_4"> -- : -- </td>
+                            <td id="4_5"> -- : -- </td>
+                            <td id="4_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="5_1"> -- : -- </td>
+                            <td id="5_2"> -- : -- </td>
+                            <td id="5_3"> -- : -- </td>
+                            <td id="5_4"> -- : -- </td>
+                            <td id="5_5"> -- : -- </td>
+                            <td id="5_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="6_1"> -- : -- </td>
+                            <td id="6_2"> -- : -- </td>
+                            <td id="6_3"> -- : -- </td>
+                            <td id="6_4"> -- : -- </td>
+                            <td id="6_5"> -- : -- </td>
+                            <td id="6_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="7_1"> -- : -- </td>
+                            <td id="7_2"> -- : -- </td>
+                            <td id="7_3"> -- : -- </td>
+                            <td id="7_4"> -- : -- </td>
+                            <td id="7_5"> -- : -- </td>
+                            <td id="7_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="8_1"> -- : -- </td>
+                            <td id="8_2"> -- : -- </td>
+                            <td id="8_3"> -- : -- </td>
+                            <td id="8_4"> -- : -- </td>
+                            <td id="8_5"> -- : -- </td>
+                            <td id="8_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="9_1"> -- : -- </td>
+                            <td id="9_2"> -- : -- </td>
+                            <td id="9_3"> -- : -- </td>
+                            <td id="9_4"> -- : -- </td>
+                            <td id="9_5"> -- : -- </td>
+                            <td id="9_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="10_1"> -- : -- </td>
+                            <td id="10_2"> -- : -- </td>
+                            <td id="10_3"> -- : -- </td>
+                            <td id="10_4"> -- : -- </td>
+                            <td id="10_5"> -- : -- </td>
+                            <td id="10_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="11_1"> -- : -- </td>
+                            <td id="11_2"> -- : -- </td>
+                            <td id="11_3"> -- : -- </td>
+                            <td id="11_4"> -- : -- </td>
+                            <td id="11_5"> -- : -- </td>
+                            <td id="11_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="12_1"> -- : -- </td>
+                            <td id="12_2"> -- : -- </td>
+                            <td id="12_3"> -- : -- </td>
+                            <td id="12_4"> -- : -- </td>
+                            <td id="12_5"> -- : -- </td>
+                            <td id="12_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="13_1"> -- : -- </td>
+                            <td id="13_2"> -- : -- </td>
+                            <td id="13_3"> -- : -- </td>
+                            <td id="13_4"> -- : -- </td>
+                            <td id="13_5"> -- : -- </td>
+                            <td id="13_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="14_1"> -- : -- </td>
+                            <td id="14_2"> -- : -- </td>
+                            <td id="14_3"> -- : -- </td>
+                            <td id="14_4"> -- : -- </td>
+                            <td id="14_5"> -- : -- </td>
+                            <td id="14_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="15_1"> -- : -- </td>
+                            <td id="15_2"> -- : -- </td>
+                            <td id="15_3"> -- : -- </td>
+                            <td id="15_4"> -- : -- </td>
+                            <td id="15_5"> -- : -- </td>
+                            <td id="15_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="16_1"> -- : -- </td>
+                            <td id="16_2"> -- : -- </td>
+                            <td id="16_3"> -- : -- </td>
+                            <td id="16_4"> -- : -- </td>
+                            <td id="16_5"> -- : -- </td>
+                            <td id="16_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="17_1"> -- : -- </td>
+                            <td id="17_2"> -- : -- </td>
+                            <td id="17_3"> -- : -- </td>
+                            <td id="17_4"> -- : -- </td>
+                            <td id="17_5"> -- : -- </td>
+                            <td id="17_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="18_1"> -- : -- </td>
+                            <td id="18_2"> -- : -- </td>
+                            <td id="18_3"> -- : -- </td>
+                            <td id="18_4"> -- : -- </td>
+                            <td id="18_5"> -- : -- </td>
+                            <td id="18_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="19_1"> -- : -- </td>
+                            <td id="19_2"> -- : -- </td>
+                            <td id="19_3"> -- : -- </td>
+                            <td id="19_4"> -- : -- </td>
+                            <td id="19_5"> -- : -- </td>
+                            <td id="19_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="20_1"> -- : -- </td>
+                            <td id="20_2"> -- : -- </td>
+                            <td id="20_3"> -- : -- </td>
+                            <td id="20_4"> -- : -- </td>
+                            <td id="20_5"> -- : -- </td>
+                            <td id="20_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="21_1"> -- : -- </td>
+                            <td id="21_2"> -- : -- </td>
+                            <td id="21_3"> -- : -- </td>
+                            <td id="21_4"> -- : -- </td>
+                            <td id="21_5"> -- : -- </td>
+                            <td id="21_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="22_1"> -- : -- </td>
+                            <td id="22_2"> -- : -- </td>
+                            <td id="22_3"> -- : -- </td>
+                            <td id="22_4"> -- : -- </td>
+                            <td id="22_5"> -- : -- </td>
+                            <td id="22_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="23_1"> -- : -- </td>
+                            <td id="23_2"> -- : -- </td>
+                            <td id="23_3"> -- : -- </td>
+                            <td id="23_4"> -- : -- </td>
+                            <td id="23_5"> -- : -- </td>
+                            <td id="23_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="24_1"> -- : -- </td>
+                            <td id="24_2"> -- : -- </td>
+                            <td id="24_3"> -- : -- </td>
+                            <td id="24_4"> -- : -- </td>
+                            <td id="24_5"> -- : -- </td>
+                            <td id="24_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="25_1"> -- : -- </td>
+                            <td id="25_2"> -- : -- </td>
+                            <td id="25_3"> -- : -- </td>
+                            <td id="25_4"> -- : -- </td>
+                            <td id="25_5"> -- : -- </td>
+                            <td id="25_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="26_1"> -- : -- </td>
+                            <td id="26_2"> -- : -- </td>
+                            <td id="26_3"> -- : -- </td>
+                            <td id="26_4"> -- : -- </td>
+                            <td id="26_5"> -- : -- </td>
+                            <td id="26_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="27_1"> -- : -- </td>
+                            <td id="27_2"> -- : -- </td>
+                            <td id="27_3"> -- : -- </td>
+                            <td id="27_4"> -- : -- </td>
+                            <td id="27_5"> -- : -- </td>
+                            <td id="27_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="28_1"> -- : -- </td>
+                            <td id="28_2"> -- : -- </td>
+                            <td id="28_3"> -- : -- </td>
+                            <td id="28_4"> -- : -- </td>
+                            <td id="28_5"> -- : -- </td>
+                            <td id="28_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="29_1"> -- : -- </td>
+                            <td id="29_2"> -- : -- </td>
+                            <td id="29_3"> -- : -- </td>
+                            <td id="29_4"> -- : -- </td>
+                            <td id="29_5"> -- : -- </td>
+                            <td id="29_6"> -- : -- </td>
                         </tr>
                         <tr class="tabulka-select">
-                            <td>DATUM</td>
-                            <td>DEN</td>
-                            <td>PŘÍCHOD</td>
-                            <td>ODCHOD</td>
-                            <td>ODPRACOVÁNO</td>
-                            <td>POZNÁMKY</td>
+                            <td id="30_1"> -- : -- </td>
+                            <td id="30_2"> -- : -- </td>
+                            <td id="30_3"> -- : -- </td>
+                            <td id="30_4"> -- : -- </td>
+                            <td id="30_5"> -- : -- </td>
+                            <td id="30_6"> -- : -- </td>
                         </tr>
                         
 

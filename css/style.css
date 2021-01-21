@@ -22,7 +22,7 @@ h1 {
     background-color: #495464 ;
     border-radius: 30px;
     margin: 2rem 2rem;
-    padding: 1rem ;
+    padding: 0.5rem 1rem 0.5rem 1rem ;
     
 }
 
@@ -136,5 +136,6 @@ tbody {
 
 .souhrn-timeInfo {
     padding-left: 2rem;
+    font-style: normal;
 }
 
