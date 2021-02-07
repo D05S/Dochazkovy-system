@@ -154,14 +154,14 @@
                         </tr>
 
                         <% for ( var i=0; i<month; i++) { %>
-
+                    
                             <tr class="tabulka-select">
-                                <td> <%= dateInfoShow %></td>
-                                <td> <%= dayInfoShow %>  </td>
-                                <td> <%= arrivalInfoShow %> </td>
-                                <td> <%= leaveInfoShow %>  </td>
-                                <td> <%= workHoursInfoShow %> </td>
-                                <td> <%= noteInfoShow %>  </td>
+                                <td> <%= presenceShow[i].date %></td>
+                                <td> <%= presenceShow[i].day %>  </td>
+                                <td> <%= presenceShow[i].start %> </td>
+                                <td> <%= presenceShow[i].end %>  </td>
+                                <td> <%= presenceShow[i].time %> </td>
+                                <td> <%= presenceShow[i].reason %>  </td>
                             </tr>
 
                         <% } %>

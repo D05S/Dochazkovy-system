@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require ("body-parser");
 const http = require ("http");
+const axios = require ("axios");
 
 
 
@@ -13,13 +14,7 @@ let userInputClass = " -- : -- ";
 // for time table generation, days, presence !
 
 let numberOfDays = "";
-let dateInfo = " -- : -- ";
-let dayInfo = " -- : -- ";
-let arrivalInfo = " -- : --";
-let leaveInfo = " -- : -- ";
-let workHoursInfo = " -- : -- ";
-let noteInfo = " -- : -- ";
-
+let presenceInfo = " -- : -- ";
 
 // for souhrn info 
 
@@ -43,17 +38,20 @@ app.use(express.static("public"));
 
 
 
+
+
+
 app.get("/", function(req, res){
 
-    let today = new Date();
+     let today = new Date();
 
-    let options = {
-        weekday: "long",
-        day: "numeric",
-        month: "long",
-    };
+     let options = {
+         weekday: "long",
+         day: "numeric",
+         month: "long",
+     };
 
-    let day = today.toLocaleDateString("cz-CZ", options);
+     let day = today.toLocaleDateString("cz-CZ", options);
 
     
    
@@ -63,96 +61,96 @@ app.get("/", function(req, res){
         
     
 
-    res.render("list", { 
-        // Time
-        dateOfDay: day, 
-        // user Info
-        userNumber: userInputNumber, 
-        userName: userInputName, 
-        userClass: userInputClass, 
-        // presence Info
-        month: numberOfDays,
-        dateInfoShow: dateInfo,
-        dayInfoShow: dayInfo,
-        arrivalInfoShow: arrivalInfo,
-        leaveInfoShow: leaveInfo,
-        workHoursInfoShow: workHoursInfo,
-        noteInfoShow: noteInfo,
+     res.render("list", { 
 
+         // Time
+         dateOfDay: day, 
+
+         // user Info
+         userNumber: userInputNumber, 
+         userName: userInputName, 
+         userClass: userInputClass, 
+
+         // presence Info
+         month: numberOfDays,
+         presenceShow: presenceInfo,
         
+         // Souhrn Info
+         overTimeShow: overTime,
+         holidayTimeShow: holidayTime,
+         medicalVisitsShow: medicalVisits,
+         workDaysShow: workDays,
+         remainingDaysShow: remainingDays,
+     });
 
-        // Souhrn Info
-        overTimeShow: overTime,
-        holidayTimeShow: holidayTime,
-        medicalVisitsShow: medicalVisits,
-        workDaysShow: workDays,
-        remainingDaysShow: remainingDays,
-    });
-
-});
+ });
 
 
 app.post("/", function(req, res){
 
-    userInputNumber = req.body.userNumber;
-    userInputName = req.body.userName;
-    userInputClass = req.body.userDepartment;
+     userInputNumber = req.body.userNumber;
+     userInputName = req.body.userName;
+     userInputClass = req.body.userDepartment;
 
-    const url = "http://127.0.0.1:8000/api/test"
+     const url = "http://127.0.0.1:8000/api/test"
 
-    let osobniId = userInputNumber;
-    const urlApi = "file://fs1.intranet.fpc.cz/vis/soubory2/" + osobniId + "/vykaz1.html"
+     let osobniId = userInputNumber;
+     const urlApi = "file://fs1.intranet.fpc.cz/vis/soubory2/" + osobniId + "/vykaz1.html"
 
-    http.get(url, function(response){
+    
 
-        console.log(response.statusCode);
+     http.get(url, function(response){
 
-        response.on("data", function(data){
+         console.log(response.statusCode);
+
+         response.on("data", function(data){
             
-            const apiData = JSON.parse(data)
+             const apiData = JSON.parse(data)
             const mainInfo = apiData.data;
-            const presence = mainInfo.times;
+             const presence = mainInfo.times;
 
 
-            // presence Info
-            numberOfDays = presence.length;
+             // presence Info
+             numberOfDays = presence.length;
+             presenceInfo = presence;
             
             
+             // for souhrn
 
-                dateInfo = presence[0].date;
-                dayInfo = presence[0].day;
-                arrivalInfo = presence[0].start;
-                leaveInfo = presence[0].end;
-                workHoursInfo = presence[0].time;
-                noteInfo = presence[0].reason;
-
-            
-            
-
-            // for souhrn
-
-            overTime = mainInfo.prescas;
-            holidayTime = mainInfo.dovolena;
-            medicalVisits = mainInfo.lekar;
-            workDays = mainInfo.pracovnichDnuCelkem;
-            remainingDays = mainInfo.odpracovanoDnu;
+             overTime = mainInfo.prescas;
+             holidayTime = mainInfo.dovolena;
+             medicalVisits = mainInfo.lekar;
+             workDays = mainInfo.pracovnichDnuCelkem;
+             remainingDays = mainInfo.odpracovanoDnu;
 
 
-            // for info only
+             // for info only
             
 
             
             
-            userInformation.push(userInputNumber, userInputName, urlApi);
-            console.log(userInformation);
-
+             userInformation.push(userInputNumber, userInputName, urlApi);
+             console.log(userInformation);
             
-        })
+         })
 
+
+         res.redirect("/");
         
-        res.redirect("/");
-        
+     });
+
+     axios.post("http://127.0.0.1:8000/api/test", {
+        number: userInputNumber,
+        nameOfUser: userInputName,
+        department: userInputClass,
+        pathInfo: urlApi
+      })
+      .then((response) => {
+        console.log(number);
+      }, (error) => {
+        console.log(error);
     });
+    
 
 });
 
