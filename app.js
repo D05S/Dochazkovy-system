@@ -82,7 +82,6 @@ app.get("/", function(req, res){
          workDaysShow: workDays,
          remainingDaysShow: remainingDays,
      });
-
  });
 
 
@@ -92,23 +91,24 @@ app.post("/", function(req, res){
      userInputName = req.body.userName;
      userInputClass = req.body.userDepartment;
 
-     const url = "http://127.0.0.1:8000/api/test"
+    //  const url = "http://127.0.0.1:8000/api/test"
 
-     let osobniId = userInputNumber;
-     const urlApi = "file://fs1.intranet.fpc.cz/vis/soubory2/" + osobniId + "/vykaz1.html"
+    //  let osobniId = userInputNumber;
+    //  const urlApi = "file://fs1.intranet.fpc.cz/vis/soubory2/" + osobniId + "/vykaz1.html"
+
+    const urlApi = "http://127.0.0.1:8000/api/test?pathInfo=file://fs1.intranet.fpc.cz/vis/soubory2/" + userInputNumber + "/vykaz1.html&nameOfUser=" + userInputName + "&number=" + userInputNumber + "&department=" + userInputClass
 
     
 
-     http.get(url, function(response){
+     http.get(urlApi, function(response){
 
          console.log(response.statusCode);
 
          response.on("data", function(data){
             
              const apiData = JSON.parse(data)
-            const mainInfo = apiData.data;
+             const mainInfo = apiData.data;
              const presence = mainInfo.times;
-
 
              // presence Info
              numberOfDays = presence.length;
@@ -131,6 +131,7 @@ app.post("/", function(req, res){
             
              userInformation.push(userInputNumber, userInputName, urlApi);
              console.log(userInformation);
+             console.log(urlAPi);
             
          })
 
@@ -139,17 +140,17 @@ app.post("/", function(req, res){
         
      });
 
-     axios.post("http://127.0.0.1:8000/api/test", {
-        number: userInputNumber,
-        nameOfUser: userInputName,
-        department: userInputClass,
-        pathInfo: urlApi
-      })
-      .then((response) => {
-        console.log(number);
-      }, (error) => {
-        console.log(error);
-    });
+    //  axios.post("http://127.0.0.1:8000/api/test", {
+    //     number: userInputNumber,
+    //     nameOfUser: userInputName,
+    //     department: userInputClass,
+    //     pathInfo: urlApi
+    //   })
+    //   .then((response) => {
+    //     console.log(number);
+    //   }, (error) => {
+    //     console.log(error);
+    // });
     
 
 });
