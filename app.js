@@ -11,7 +11,7 @@ let userInputNumber = " -- : -- ";
 let userInputName = " -- : -- ";
 let userInputClass = " -- : -- ";
 
-// for time table generation, days, presence !
+// for time table generate, days, presence !
 
 let numberOfDays = "";
 let presenceInfo = " -- : -- ";
@@ -91,12 +91,17 @@ app.post("/", function(req, res){
      userInputName = req.body.userName;
      userInputClass = req.body.userDepartment;
 
+
+     let userNumberPost = userInputNumber;
+     let userNamePost = userInputName;
+     let userClassPost = userInputClass;
+
     //  const url = "http://127.0.0.1:8000/api/test"
 
     //  let osobniId = userInputNumber;
     //  const urlApi = "file://fs1.intranet.fpc.cz/vis/soubory2/" + osobniId + "/vykaz1.html"
 
-    const urlApi = "http://127.0.0.1:8000/api/test?pathInfo=file://fs1.intranet.fpc.cz/vis/soubory2/" + userInputNumber + "/vykaz1.html&nameOfUser=" + userInputName + "&number=" + userInputNumber + "&department=" + userInputClass
+    const urlApi = "http://127.0.0.1:8000/api/test?pathInfo=file://fs1.intranet.fpc.cz/vis/soubory2/" + userNumberPost + "/vykaz1.html&nameOfUser=" + userNamePost + "&number=" + userNumberPost + "&department=" + userClassPost
 
     
 
