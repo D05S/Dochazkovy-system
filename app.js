@@ -54,13 +54,6 @@ app.get("/", function(req, res){
      let day = today.toLocaleDateString("cz-CZ", options);
 
     
-   
-    
-        
-          
-        
-    
-
      res.render("list", { 
 
          // Time
@@ -96,72 +89,68 @@ app.post("/", function(req, res){
      let userNamePost = userInputName;
      let userClassPost = userInputClass;
 
-    //  const url = "http://127.0.0.1:8000/api/test"
-
-    let osobniId = userInputNumber;
-    //  const urlApi = "file://fs1.intranet.fpc.cz/vis/soubory2/" + osobniId + "/vykaz1.html"
+     let osobniId = userInputNumber;
 
     // http://app1.intranet.fpc.cz/doch/105/vykaz1.html
 
-    const urlApi = "http://127.0.0.1:8000/api/test?pathInfo=file://fs1.intranet.fpc.cz/vis/soubory2/" + osobniId + "/vykaz1.html&nameOfUser=" + userNamePost + "&number=" + userNumberPost + "&department=" + userClassPost
+    const urlApi = "http://127.0.0.1:8000/api/test?pathInfo=file://fs1.intranet.fpc.cz/vis/soubory2/" + osobniId + "/vykaz1.html&nameOfUser=" + userNamePost + "&number=" + userNumberPost + "&department=" + userClassPost;
 
-    
-
-     http.get(urlApi, function(response){
+    http.get(urlApi, function(response){
 
          console.log(response.statusCode);
 
-         response.on("data", function(data){
+         response.on("data", function(err,data){
+
+            if (err) {
+
+                console.log("--- Error ---");
+                console.log(err);
+
+            } else {
+
+                console.log( "--- OK ---");
+                console.log(" --- Continue ---");
+                
+                const apiData = JSON.parse(data);    
+                const mainInfo = apiData.data;    
+                const presence = mainInfo.times;
+                
+                // presence Info
+                numberOfDays = presence.length;
+                presenceInfo = presence;
+                
+                
+                // for souhrn
+
+                overTime = mainInfo.prescas;
+                holidayTime = mainInfo.dovolena;
+                medicalVisits = mainInfo.lekar;
+                workDays = mainInfo.pracovnichDnuCelkem;
+                remainingDays = mainInfo.odpracovanoDnu;
             
-             const apiData = JSON.parse(data);
-             const mainInfo = apiData.data;
-             const presence = mainInfo.times;
-
-             
-             // presence Info
-             numberOfDays = presence.length;
-             presenceInfo = presence;
-            
-            
-             // for souhrn
-
-             overTime = mainInfo.prescas;
-             holidayTime = mainInfo.dovolena;
-             medicalVisits = mainInfo.lekar;
-             workDays = mainInfo.pracovnichDnuCelkem;
-             remainingDays = mainInfo.odpracovanoDnu;
-
-
-             // for info only
             
 
-             console.log( " --- informace ---");
-             console.log(mainInfo);
-             console.log(mainInfo.times);
+                // for info only
+                
 
-             userInformation.push(userInputNumber, userInputName, urlApi);
-             console.log(userInformation);
-             console.log(urlAPi);
+                console.log( " --- informace ---");
+                console.log(mainInfo);
+                console.log(mainInfo.times);
+
+                userInformation.push(userInputNumber, userInputName, urlApi);
+                console.log(userInformation);
+                console.log(urlAPi);
+            };
             
-         })
+            
+         });
 
 
          res.redirect("/");
         
      });
 
-    //  axios.post("http://127.0.0.1:8000/api/test", {
-    //     number: userInputNumber,
-    //     nameOfUser: userInputName,
-    //     department: userInputClass,
-    //     pathInfo: urlApi
-    //   })
-    //   .then((response) => {
-    //     console.log(number);
-    //   }, (error) => {
-    //     console.log(error);
-    // });
-    
+     
 
 });
 
@@ -169,7 +158,7 @@ app.post("/", function(req, res){
 
 
 
-app.listen(3030, function(){
-    console.log(" --- Server is running | Port 3030 ---")
+app.listen(8080, function(){
+    console.log(" --- Server is running | Port 8080 ---")
 
 });
