@@ -55,27 +55,52 @@ app.get("/", function(req, res){
 
     
      res.render("list", { 
-
          // Time
          dateOfDay: day, 
-
-         // user Info
-         userNumber: userInputNumber, 
-         userName: userInputName, 
-         userClass: userInputClass, 
-
-         // presence Info
-         month: numberOfDays,
-         presenceShow: presenceInfo,
-        
-         // Souhrn Info
-         overTimeShow: overTime,
-         holidayTimeShow: holidayTime,
-         medicalVisitsShow: medicalVisits,
-         workDaysShow: workDays,
-         remainingDaysShow: remainingDays,
      });
- });
+});
+
+
+
+app.get("/:personalWork", function(req, res){
+
+    let today = new Date();
+
+    let options = {
+        weekday: "long",
+        day: "numeric",
+        month: "long",
+    };
+
+    let day = today.toLocaleDateString("cz-CZ", options);
+
+   
+    res.render("personalWork", { 
+
+        // Time
+        dateOfDay: day, 
+
+        // user Info
+        userNumber: userInputNumber, 
+        userName: userInputName, 
+        userClass: userInputClass, 
+
+        // presence Info
+        month: numberOfDays,
+        presenceShow: presenceInfo,
+       
+        // Souhrn Info
+        overTimeShow: overTime,
+        holidayTimeShow: holidayTime,
+        medicalVisitsShow: medicalVisits,
+        workDaysShow: workDays,
+        remainingDaysShow: remainingDays,
+    });
+});
+
+
+
+
 
 
 app.post("/", function(req, res){
@@ -128,25 +153,28 @@ app.post("/", function(req, res){
                 workDays = mainInfo.pracovnichDnuCelkem;
                 remainingDays = mainInfo.odpracovanoDnu;
             
-            
-
-                // for info only
-                
-
-                console.log( " --- informace ---");
-                console.log(mainInfo);
-                console.log(mainInfo.times);
-
-                userInformation.push(userInputNumber, userInputName, urlApi);
-                console.log(userInformation);
-                console.log(urlAPi);
             };
             
             
          });
 
 
-         res.redirect("/");
+        // for info only
+                
+        userInformation.push(userInputNumber+ " - " +userInputName);
+
+        console.log( " --- informace ---");
+        console.log(userInformation);
+        console.log("Počet uživatlů | " + userInformation.length);
+        
+
+        console.log(" --- hlavni informace ---");
+        console.log(mainInfo);
+        console.log(mainInfo.times);
+
+        const personalWork = "dochazkaUzivatele" + userInputNumber + "&" + userInputName + "madyByDominikSauer";
+
+        res.redirect("/" + personalWork);
         
      });
 

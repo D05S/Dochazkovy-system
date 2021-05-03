@@ -8,9 +8,9 @@
             <div class="col-lg-6 col-md-12 order-2 order-sm-2 order-md-1 order-lg-1">
 
                 <p class="time"> <%= dateOfDay %></p>
-                <p class="info-uzivatel">OSOBNÍ ČÍSO: <span class="info-added">  -- : --  </span></p></p>
-                <p class="info-uzivatel">JMÉNO & PŘIJÍMENÍ: <span class="info-added"> -- : -- </span></p>
-                <p class="info-uzivatel">ODDĚLENÍ: <span id="departmentInfo" class="info-added"> -- : --  </span></p>
+                <p class="info-uzivatel">OSOBNÍ ČÍSO: <span class="info-added"> <%= userNumber %> </span></p></p>
+                <p class="info-uzivatel">JMÉNO & PŘIJÍMENÍ: <span class="info-added"> <%= userName %> </span></p>
+                <p class="info-uzivatel">ODDĚLENÍ: <span id="departmentInfo" class="info-added"> <%= userClass %> </span></p>
                 
 
             </div>
@@ -90,23 +90,23 @@
                     <tbody>
                         <tr class="souhrn-rozdeleni">
                             <td>PŘESČAS: </td>
-                            <td class="souhrn-timeInfo" > hh:hh </td>
+                            <td class="souhrn-timeInfo" > <%= overTimeShow %> </td>
                         </tr>
                         <tr class="souhrn-rozdeleni">
                             <td>POČET DOVOLENÉ TENTO MĚSÍC: </td>
-                            <td class="souhrn-timeInfo" > dd  </td>
+                            <td class="souhrn-timeInfo" > <%= holidayTimeShow %>  </td>
                         </tr>
                         <tr class="souhrn-rozdeleni">
                             <td>NÁVŠTĚVA LÉKAŘE TENTO MĚSÍC: </td>
-                            <td class="souhrn-timeInfo" > dd </td>
+                            <td class="souhrn-timeInfo" > <%= medicalVisitsShow %> </td>
                         </tr>
                         <tr class="souhrn-rozdeleni">
                             <td>PRACOVNÍ DNY TENTO MĚSÍC: </td>
-                            <td class="souhrn-timeInfo" > dd </td>
+                            <td class="souhrn-timeInfo" > <%= workDaysShow %> </td>
                         </tr>
                         <tr class="souhrn-rozdeleni">
                             <td>ODPRACOVÁNO DNÍ: </td>
-                            <td class="souhrn-timeInfo" > dd  </td>
+                            <td class="souhrn-timeInfo" > <%= remainingDaysShow %>  </td>
                         </tr>
                         
                     </tbody>
@@ -127,7 +127,19 @@
                             <td class="position-text">POZNÁMKY</td>
                         </tr>
 
-                       
+                        <% for ( var i=0; i<month; i++) { %>
+                    
+                            <tr class="tabulka-select">
+                                <td> <%= presenceShow[i].date %></td>
+                                <td> <%= presenceShow[i].day %>  </td>
+                                <td> <%= presenceShow[i].start %> </td>
+                                <td> <%= presenceShow[i].end %>  </td>
+                                <td> <%= presenceShow[i].time %> </td>
+                                <td> <%= presenceShow[i].reason %>  </td>
+                            </tr>
+
+                        <% } %>
+
                        
 
                     </tbody>
