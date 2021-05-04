@@ -120,21 +120,31 @@ app.post("/", function(req, res){
 
     const urlApi = "http://127.0.0.1:8000/api/test?pathInfo=file://fs1.intranet.fpc.cz/vis/soubory2/" + osobniId + "/vykaz1.html&nameOfUser=" + userNamePost + "&number=" + userNumberPost + "&department=" + userClassPost;
 
+    
+
+    // const api = {
+    //     host: "127.0.0.1",
+    //     port: 8000,
+    //     path: "/api/test?pathInfo=file://fs1.intranet.fpc.cz/vis/soubory2/" + osobniId + "/vykaz1.html&nameOfUser=" + userNamePost + "&number=" + userNumberPost + "&department=" + userClassPost
+    // }
+
     http.get(urlApi, function(response){
 
-         console.log(response.statusCode);
+        console.log(response.statusCode);
 
-         response.on("data", function(err,data){
+        response.on("data", function(err,data){
 
             if (err) {
 
                 console.log("--- Error ---");
                 console.log(err);
+               
 
             } else {
 
                 console.log( "--- OK ---");
                 console.log(" --- Continue ---");
+                
                 
                 const apiData = JSON.parse(data);    
                 const mainInfo = apiData.data;    
@@ -161,7 +171,7 @@ app.post("/", function(req, res){
 
         // for info only
                 
-        userInformation.push(userInputNumber+ " - " +userInputName);
+        userInformation.push(userInputNumber + " - " + userInputName);
 
         console.log( " --- informace ---");
         console.log(userInformation);
@@ -178,7 +188,6 @@ app.post("/", function(req, res){
         
      });
 
-     
 
 });
 
